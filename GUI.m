@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 08-Jun-2021 02:00:17
+% Last Modified by GUIDE v2.5 09-Jun-2021 16:32:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -73,43 +73,118 @@ function varargout = GUI_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
+% --- Executes on button press in Suma_Resta.
+function Suma_Resta_Callback(hObject, eventdata, handles)
+% hObject    handle to Suma_Resta (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
+% --- Executes during object creation, after setting all properties.
+function Suma_Resta_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to Suma_Resta (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+% --- Executes on button press in Amp_Aten.
+function Amp_Aten_Callback(hObject, eventdata, handles)
+% hObject    handle to Amp_Aten (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton6.
-function pushbutton6_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton6 (see GCBO)
+% --- Executes on button press in Reflejo.
+function Reflejo_Callback(hObject, eventdata, handles)
+% hObject    handle to Reflejo (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton7.
-function pushbutton7_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton7 (see GCBO)
+% --- Executes on button press in Desplazamiento.
+function Desplazamiento_Callback(hObject, eventdata, handles)
+% hObject    handle to Desplazamiento (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton5.
-function pushbutton5_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton5 (see GCBO)
+% --- Executes on button press in Diez_Inter.
+function Diez_Inter_Callback(hObject, eventdata, handles)
+% hObject    handle to Diez_Inter (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in pushbutton4.
-function pushbutton4_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton4 (see GCBO)
+% --- Executes on button press in Conv.
+function Conv_Callback(hObject, eventdata, handles)
+% hObject    handle to Conv (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+
+function audio_name_Callback(hObject, eventdata, handles)
+% hObject    handle to audio_name (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of audio_name as text
+%        str2double(get(hObject,'String')) returns contents of audio_name as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function audio_name_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to audio_name (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in audio_text_button.
+function audio_text_button_Callback(hObject, eventdata, handles)
+   
+    audio_file = get(handles.audio_name, 'String');
+    set(handles.audio_title, 'String', audio_file);
+    
+    [s, fs] = audioread(audio_file);
+    
+    tiempo = size(s,1)/fs;
+    x = 0:1/fs:tiempo;
+
+    plot(x(2:end),s), xlim([0 tiempo]);
+
+    l = s(:,1);
+    
+    sound(l,fs); 
+    
+
+% --- Executes on button press in Grabar_button.
+function Grabar_button_Callback(hObject, eventdata, handles)
+    
+    fs = 44100;
+    nBits = 16;
+    nChannels = 2;
+    ID = -1;
+
+    recording = audiorecorder(fs, nBits, nChannels, ID);
+    disp('Start Speaking.');
+    recordblocking(recording, 3);
+    disp('End of Recording.');
+    
+    y = getaudiodata(recording);
+    plot(y);
+    
+    sound(y, fs);
+    
+    
+    
+    
+
+
+
+
