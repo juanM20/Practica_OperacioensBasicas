@@ -2,7 +2,7 @@ function [B,C,D]= Interpolacion_cero(Ag1,k)
    
     n=length(Ag1);
     A=n*k;
-    B=zeros(1,A)
+    B=zeros(1,A);
     C=zeros(1,A);
     D=zeros(1,A);
     
