@@ -144,7 +144,13 @@ function Interpolacion_Callback(hObject, eventdata, handles)
    
 % --- Executes on button press in Desplazamineto.
 function Desplazamineto_Callback(hObject, eventdata, handles)
-
+    
+    x = str2num(get(handles.vector1, 'String'));
+    y = str2num(get(handles.vector2, 'String'));
+    
+    plot(x)
+    hold on
+    plot(x+y)
 
     
 
