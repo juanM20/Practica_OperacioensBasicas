@@ -123,8 +123,6 @@ function [B,C,D]= Interpolacion_cero(Ag1,k)
 
 
 
-
-
 % --- Executes on button press in Interpolacion.
 function Interpolacion_Callback(hObject, eventdata, handles)
     
@@ -146,7 +144,8 @@ function Interpolacion_Callback(hObject, eventdata, handles)
    
 % --- Executes on button press in Desplazamineto.
 function Desplazamineto_Callback(hObject, eventdata, handles)
-    
+
+
     
 
 % --- Executes on button press in Convolucion.

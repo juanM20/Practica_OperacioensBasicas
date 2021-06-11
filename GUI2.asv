@@ -123,8 +123,6 @@ function [B,C,D]= Interpolacion_cero(Ag1,k)
 
 
 
-
-
 % --- Executes on button press in Interpolacion.
 function Interpolacion_Callback(hObject, eventdata, handles)
     
@@ -133,21 +131,30 @@ function Interpolacion_Callback(hObject, eventdata, handles)
     
     [B,C,D] = Interpolacion_cero(x,y);
     
-    plot(B);
-    pause(3);
-    plot(C);
-    plot(D);
+    menu1 = menu('Elige el método de interpolación','Zero','Escalon','Lineal');
     
-
+    switch menu1
+        case 1
+            plot(B);
+        case 2
+            plot(C);
+        case 3
+            plot(D);
+    end
+   
 % --- Executes on button press in Desplazamineto.
 function Desplazamineto_Callback(hObject, eventdata, handles)
+    
+    
+    
 
 % --- Executes on button press in Convolucion.
 function Convolucion_Callback(hObject, eventdata, handles)
     
     x = str2num(get(handles.vector1, 'String'));
     y = str2num(get(handles.vector2, 'String'));
-    w = conv(x,y);
+    
+    
     plot(w);
   
 
