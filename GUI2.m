@@ -22,7 +22,7 @@ function varargout = GUI2(varargin)
 
 % Edit the above text to modify the response to help GUI2
 
-% Last Modified by GUIDE v2.5 10-Jun-2021 22:12:58
+% Last Modified by GUIDE v2.5 11-Jun-2021 01:10:31
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -215,3 +215,9 @@ function vector2_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in Regresar.
+function Regresar_Callback(hObject, eventdata, handles)
+    close;
+    Menu;

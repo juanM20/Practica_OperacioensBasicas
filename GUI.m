@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 10-Jun-2021 21:28:13
+% Last Modified by GUIDE v2.5 11-Jun-2021 01:19:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -206,5 +206,7 @@ function Grabar_button_Callback(hObject, eventdata, handles)
     sound(y, fs);
     
     
-    
-    
+% --- Executes on button press in Regresar.
+function Regresar_Callback(hObject, eventdata, handles)
+    close;
+    Menu;
