@@ -133,21 +133,14 @@ function Interpolacion_Callback(hObject, eventdata, handles)
     
     [B,C,D] = Interpolacion_cero(x,y);
     
-    menu1 = menu('Elige el método de interpolación','Zero','Escalon','Lineal');
+    plot(B);
+    pause(3);
+    plot(C);
+    plot(D);
     
-    switch menu1
-        case 1
-            plot(B);
-        case 2
-            plot(C);
-        case 3
-            plot(D);
-    end
-   
+
 % --- Executes on button press in Desplazamineto.
 function Desplazamineto_Callback(hObject, eventdata, handles)
-    
-    
 
 % --- Executes on button press in Convolucion.
 function Convolucion_Callback(hObject, eventdata, handles)
