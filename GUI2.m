@@ -165,6 +165,7 @@ function Desplazamineto_Callback(hObject, eventdata, handles)
     F=centro+val;
     k=plot(F,x)
     legend([u k],{'X(n)','X(n+k)'})
+    hold off;
 
     
 

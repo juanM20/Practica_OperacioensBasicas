@@ -90,21 +90,15 @@ function Suma_Resta_Callback(hObject, eventdata, handles)
             l = s(:,1);
             sound(l,fs+val);
             
-            tiempo = size(s,1)/(fs+val);
-            x = 0:1/(fs+val):tiempo;
+            tiempo = size(s,1)/fs;
+            x = 0:1/fs:tiempo;
 
-            plot(x(2:end),l), xlim([0 tiempo]);
-            
+    plot(x(2:end),s), xlim([0 tiempo]);
         case 2
             audio_file = get(handles.audio_name, 'String');
             [s, fs] = audioread(audio_file);
             l = s(:,1);
             sound(l,fs-val);
-            
-            tiempo = size(s,1)/(fs-val);
-            x = 0:1/(fs-val):tiempo;
-
-            plot(x(2:end),l), xlim([0 tiempo]);
     end
 
 
