@@ -20,5 +20,3 @@ sound(l*10,fs); %Amplificación
 pause(4);
 sound(l/5,fs); %Atenuación
 pause(4);
-
-
