@@ -148,9 +148,19 @@ function Desplazamineto_Callback(hObject, eventdata, handles)
     x = str2num(get(handles.vector1, 'String'));
     y = str2num(get(handles.vector2, 'String'));
     
-    plot(x)
-    hold on
-    plot(x+y)
+    prompt = {'Ingresa un valor de desplazamiento: '};
+    dlgtitle = 'Valor de entrada';
+    dims = [1 35]
+    definput = {'2'}
+    resp = inputdlg(prompt, dlgtitle, dims, definput);
+    val = str2double(resp); 
+    
+    centro=1-y:length(x)-y;
+    grid
+    plot(centro,x)
+    hold on;
+    F=centro+val;
+    plot(F,x)
 
     
 

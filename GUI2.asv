@@ -145,7 +145,22 @@ function Interpolacion_Callback(hObject, eventdata, handles)
 % --- Executes on button press in Desplazamineto.
 function Desplazamineto_Callback(hObject, eventdata, handles)
     
+    x = str2num(get(handles.vector1, 'String'));
+    y = str2num(get(handles.vector2, 'String'));
     
+    prompt = {'Ingresa un valor: '};
+    dlgtitle = 'Valor de entrada';
+    dims = [1 35]
+    definput = {'20000'}
+    resp = inputdlg(prompt, dlgtitle, dims, definput);
+    val = str2double(resp); 
+    
+    
+    
+    plot(x)
+    hold on
+    plot(x+y)
+
     
 
 % --- Executes on button press in Convolucion.
@@ -153,8 +168,7 @@ function Convolucion_Callback(hObject, eventdata, handles)
     
     x = str2num(get(handles.vector1, 'String'));
     y = str2num(get(handles.vector2, 'String'));
-    
-    
+    w = conv(x,y);
     plot(w);
   
 
