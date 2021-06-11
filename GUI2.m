@@ -22,7 +22,7 @@ function varargout = GUI2(varargin)
 
 % Edit the above text to modify the response to help GUI2
 
-% Last Modified by GUIDE v2.5 11-Jun-2021 01:10:31
+% Last Modified by GUIDE v2.5 11-Jun-2021 01:30:25
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -73,7 +73,9 @@ function varargout = GUI2_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-
+%------------------------------
+% FUNCIÓN: Interpolación cero
+%------------------------------
 function [B,C,D]= Interpolacion_cero(Ag1,k)
    
     n=length(Ag1);
@@ -131,15 +133,16 @@ function Interpolacion_Callback(hObject, eventdata, handles)
     
     [B,C,D] = Interpolacion_cero(x,y);
     
-    menu1 = menu('Elige el método de interpolación','Zero','Escalon','Lineal');
+    % Menú interpolación:
+    menu1 = menu('Elige el método de interpolación','Zero','Escalón','Lineal');
     
     switch menu1
         case 1
-            plot(B);
+            plot(B); % Interpolación Zero
         case 2
-            plot(C);
+            plot(C); % Interpolación Escalón
         case 3
-            plot(D);
+            plot(D); % Interpolación Lineal
     end
    
 % --- Executes on button press in Desplazamineto.
