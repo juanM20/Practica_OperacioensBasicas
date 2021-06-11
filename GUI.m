@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 09-Jun-2021 16:32:43
+% Last Modified by GUIDE v2.5 10-Jun-2021 21:28:13
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -75,51 +75,75 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in Suma_Resta.
 function Suma_Resta_Callback(hObject, eventdata, handles)
-% hObject    handle to Suma_Resta (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes during object creation, after setting all properties.
-function Suma_Resta_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Suma_Resta (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
+    
+    menu1 = menu('Elige la operacion','Suma','Resta');
+    prompt = {'Ingresa un valor: '};
+    dlgtitle = 'Valor de entrada';
+    dims = [1 35]
+    definput = {'20000'}
+    resp = inputdlg(prompt, dlgtitle, dims, definput);
+    val = str2double(resp);
+    switch menu1
+        case 1
+            audio_file = get(handles.audio_name, 'String');
+            [s, fs] = audioread(audio_file);
+            l = s(:,1);
+            sound(l,fs+val);
+        case 2
+            audio_file = get(handles.audio_name, 'String');
+            [s, fs] = audioread(audio_file);
+            l = s(:,1);
+            sound(l,fs-val);
+    end
 
 
 % --- Executes on button press in Amp_Aten.
 function Amp_Aten_Callback(hObject, eventdata, handles)
-% hObject    handle to Amp_Aten (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
+    menu1 = menu('Elige la operacion','Amplificar','Atenuar');
+    prompt = {'Ingresa un valor entre [1 - 10]: '};
+    dlgtitle = 'Valor de entrada';
+    dims = [1 35];
+    definput = {'5'};
+    resp = inputdlg(prompt, dlgtitle, dims, definput);
+    val = str2double(resp);
+    switch menu1
+        case 1
+            audio_file = get(handles.audio_name, 'String');
+            [s, fs] = audioread(audio_file);
+            l = s(:,1);
+            sound(l*val,fs);
+        case 2
+            audio_file = get(handles.audio_name, 'String');
+            [s, fs] = audioread(audio_file);
+            l = s(:,1);
+            sound(l/val,fs);
+    end
 
 % --- Executes on button press in Reflejo.
 function Reflejo_Callback(hObject, eventdata, handles)
-% hObject    handle to Reflejo (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+    audio_file = get(handles.audio_name, 'String');
+    [s, fs] = audioread(audio_file);
+    l = s(:,1);
+    sound(l(end:-1:1),fs);
 
 
-% --- Executes on button press in Desplazamiento.
-function Desplazamiento_Callback(hObject, eventdata, handles)
-% hObject    handle to Desplazamiento (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
 
-% --- Executes on button press in Diez_Inter.
-function Diez_Inter_Callback(hObject, eventdata, handles)
-% hObject    handle to Diez_Inter (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-% --- Executes on button press in Conv.
-function Conv_Callback(hObject, eventdata, handles)
-% hObject    handle to Conv (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+% --- Executes on button press in Diezmacion_button.
+function Diezmacion_button_Callback(hObject, eventdata, handles)
+    audio_file = get(handles.audio_name, 'String');
+    [s, fs] = audioread(audio_file);
+    
+    prompt = {'Ingresa un valor: '};
+    dlgtitle = 'Valor de entrada';
+    dims = [1 35]
+    definput = {'2'}
+    resp = inputdlg(prompt, dlgtitle, dims, definput);
+    val = str2double(resp);
+  
+    l = s(:,1);
+    sound(l(1:val:end)*2,fs);
 
 
 
@@ -173,7 +197,7 @@ function Grabar_button_Callback(hObject, eventdata, handles)
 
     recording = audiorecorder(fs, nBits, nChannels, ID);
     disp('Start Speaking.');
-    recordblocking(recording, 3);
+        recordblocking(recording, 3);
     disp('End of Recording.');
     
     y = getaudiodata(recording);
@@ -184,7 +208,3 @@ function Grabar_button_Callback(hObject, eventdata, handles)
     
     
     
-
-
-
-
